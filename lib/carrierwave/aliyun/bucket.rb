@@ -39,6 +39,7 @@ module CarrierWave
         end
 
         res = oss_upload_client.bucket_create_object(path, file, headers)
+        oss_upload_client.bucket_set_object_acl(path, 'public-read')
         if res.success?
           path_to_url(path)
         else
